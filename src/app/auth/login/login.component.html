@@ -1,0 +1,24 @@
+
+
+<div class="signin-content">
+    <mat-card>
+      <mat-card-content>
+        <form #f="ngForm" [formGroup]="form" (ngSubmit)="login(f, !(isFieldInvalid('userId') || isFieldInvalid('password')) )">
+          <h3>Please login to continue</h3>
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="User" formControlName="userId" required>
+            <mat-error *ngIf="isFieldInvalid('userId')">
+              Please enter your user name
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input">
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error *ngIf="isFieldInvalid('password')">
+              Please enter your password
+            </mat-error>
+          </mat-form-field>
+          <p-button  color="primary" type="submit">Submit</p-button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>

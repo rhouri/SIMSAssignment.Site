@@ -1,0 +1,31 @@
+<p-growl [(value)]="msgs" [life]="3000"></p-growl>
+<p-card *ngIf="employee;else noData">
+    <p-header>
+       <h1>&nbsp;{{employee.lastName+", "+employee.firstName+" "+employee.middleName}}</h1>
+    </p-header>
+ 
+  <hr>
+<div fxLayout="row" >
+    <div fxflex="20">
+        <img [src]="employee.pictureUrl+(300+employee.id%8)" style=" max-width: 300px;height: auto;" />
+    </div>
+    <span fxFlex="3"></span>
+    <div fxLayout="column" fxFlex>
+        <app-displayfield [label]="'Employee ID'" [value]="employee.id"></app-displayfield>
+        <app-displayfield [label]="'Department'" [value]="employee.department"></app-displayfield> 
+      <app-displayfield [label]="'Email'" [value]="employee.email"></app-displayfield>
+      <app-displayfield [label]="'Phone'" [value]="employee.phone"></app-displayfield>
+      <app-displayfield *ngIf="employee.driverLicense.indexOf('**')===-1"  [label]="'Driver License'" [value]="employee.driverLicense"></app-displayfield>
+      <app-displayfield *ngIf="employee.ssn.indexOf('**')===-1" [label]="'SSN'" [value] = "employee.ssn"></app-displayfield>
+    </div>
+   
+  </div>
+  <p-footer>
+  <div fxLayout="row" fxLayoutAlign="space-around center" style="padding:6px;background-color:#f0f0f0;">
+    <p-button *ngIf="employee.ssn.indexOf('**')===-1" (click)="addEmployee()" label="New Employee" class="ui-button-rounded"></p-button>
+    <p-button  *ngIf="employee.driverLicense.indexOf('**')===-1" (click)="editEmployee()" label="Edit Employee" class="ui-button-rounded ui-button-success"></p-button>
+    <p-button  *ngIf="employee.ssn.indexOf('**')===-1" (click)="deleteEmployee()" label="Delete Employee" class="ui-button-rounded ui-button-warning"></p-button>
+  </div>
+</p-footer>
+</p-card>
+<ng-template #noData><h3>No employee Selected</h3><br />Select a employee from the list on the left </ng-template>

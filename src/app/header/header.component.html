@@ -1,0 +1,6 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayout.xs="column"  fxLayoutAlign="space-between center" fxLayoutGap="5px">
+  <h4>Employee Portal</h4>
+  <span fx-flex></span>
+  <h2 *ngIf="isLoggedIn$" >Logged in as: {{userId}}</h2>
+  <p-button  (click)="onLogout()" *ngIf="isLoggedIn$" label="Logout" class="ui-button-rounded ui-button-success"></p-button>
+</mat-toolbar>

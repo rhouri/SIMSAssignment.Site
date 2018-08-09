@@ -1,0 +1,41 @@
+<!--<button class="btn btn-success">New employee</button>-->
+<!--<div style="height:90%;overflow-y:auto;">
+  <mat-grid-list cols="1" rowHeight="120px" gutterSize="1px" [style.height]="'100%'">
+    <mat-grid-tile *ngFor="let employee of employees">
+      <app-employee-item (employeeSelected)="onemployeeSelected($event)" [employee]="employee" class="mat-tile"></app-employee-item>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div style="height:90%;overflow-y:auto;">
+  <mat-nav-list [style.height]="'100%'">
+    <a mat-list-item *ngFor="let e of employees"  [routerLink]="[e.id]" routerLinkActive='active'>
+      <img matListAvatar [src]="e.pictureUrl" alt="Desc 1">
+      <h3 matLine>{{e.lastName}}</h3>
+      <p matLine><span> {{e.firstName}}</span></p>
+    </a>
+    </mat-nav-list>
+</div>-->
+
+<p-table [columns]="cols" [value]="employees"   [style]="{'overflow':'auto!important'}" [resizableColumns]="true" columnResizeMode="expand" 
+[responsive]="true"  [rows]="20"
+   [paginator]="true" [rowsPerPageOptions]="[10,15,20,25]"
+   selectionMode="single" [(selection)]="selectedEmployee" dataKey="id"
+   (onRowSelect)="onRowSelect($event)"
+   >
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
+          {{col.header}}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-rowData let-columns="columns">
+  <tr [pSelectableRow]="rowData"  >
+      <td *ngFor="let col of columns" class="ui-resizable-column">
+              {{rowData[col.field]}}
+      </td>
+  </tr>
+  </ng-template>
+</p-table>
