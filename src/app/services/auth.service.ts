@@ -7,6 +7,7 @@ import { Observable, BehaviorSubject, pipe } from 'rxjs';
 import { BaseService } from './base.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService extends BaseService {
@@ -27,13 +28,14 @@ export class AuthService extends BaseService {
     }
 
     login(userId, password) {
-
+        let apiUrl=environment.apiUrl;
         let httpOptions: HttpHeaders = new HttpHeaders();
         httpOptions = httpOptions.set("Content-Type", "application/json");
         const user = new User(userId, password);
+        localStorage.removeItem("auth_token");
         return this.http
             .post(
-                this.baseUrl + '/auth/token',
+                apiUrl + 'auth/token',
                 user)
             .subscribe(
                 (val)=> this.setSession(val,userId),

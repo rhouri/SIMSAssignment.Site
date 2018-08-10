@@ -19,7 +19,9 @@ import { employeeStartComponent } from './employees/employee-start/employee-star
 import { employeeEditComponent } from './employees/employee-edit/employee-edit.component';
 import { DisplayfieldComponent } from './shared/displayfield/displayfield.component';
 import { LoginComponent } from './auth/login/login.component';
+import { environment } from '../environments/environment';
 
+export const API_URL=environment.apiUrl;
 export function jwtOptionsFactory() {
   return {
     tokenGetter: () => {

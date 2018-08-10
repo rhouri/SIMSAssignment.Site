@@ -1,7 +1,8 @@
 import { AuthService } from '../../services/auth.service';
 import { User } from '../userModel';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+ 
 
 import { Subscription } from 'rxjs';
 
@@ -46,13 +47,12 @@ export class LoginComponent implements OnInit {
       (this.form.get(field).untouched && this.formSubmitAttempt)
     );
   }
-
-  login( value: User, valid:boolean) {
+  login(f: NgForm) {
     this.submitted = true;
     this.isRequesting = true;
     this.errors = '';
-    if (valid) {
-      this.authService.login(value.userId, value.password);
+    if (f.valid) {
+      this.authService.login(f.value.userId, f.value.password);
     }
   }
 }
