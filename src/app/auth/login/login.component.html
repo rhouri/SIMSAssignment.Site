@@ -3,7 +3,7 @@
 <div class="signin-content">
     <mat-card>
       <mat-card-content>
-        <form #f="ngForm" [formGroup]="form" (ngSubmit)="login(f, !(isFieldInvalid('userId') || isFieldInvalid('password')) )">
+        <form #f="ngForm" [formGroup]="form" (ngSubmit)="login(f, !(isFieldInvalid('userId') || isFieldInvalid('password')))">
           <h3>Please login to continue</h3>
           <mat-form-field class="full-width-input">
             <input matInput placeholder="User" formControlName="userId" required>

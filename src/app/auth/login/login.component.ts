@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  login({ value, valid }: { value: User, valid: boolean }) {
+  login( value: User, valid:boolean) {
     this.submitted = true;
     this.isRequesting = true;
     this.errors = '';
