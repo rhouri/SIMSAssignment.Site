@@ -2,6 +2,13 @@
 view it in action at :
 https://rhouri.github.io/SIMSAssignment.Site
 
+## Login Credentials:
+  Three users implemented with different access
+  Manager/Pass123! 
+  SubManager/Pass123!
+  Receptionist/Pass123!
+
+
 # SIMSAssignment
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
